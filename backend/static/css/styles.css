@@ -1,0 +1,216 @@
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    margin-top: 10px;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 10px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #6EC1E4, #D6C3E5); 
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.hero-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 50px;
+}
+
+.content {
+    max-width: 600px;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 600;
+    color: #333333;
+    margin: 0;
+}
+
+p {
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: #555555; 
+    margin: 20px 0;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #A8E6CF; 
+    color: #333333;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 25px;
+    text-decoration: none;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #90d0ba; 
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.illustration img {
+    max-width: 500px;
+    width: 100%;
+    height: auto;
+}
+
+
+.process-section {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: white;
+    width: 100%;
+}
+
+.process-section h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.process-cards {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; 
+    gap: 20px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card .icon {
+    margin-bottom: 15px;
+}
+
+.card .icon img {
+    width: 50px;
+    height: 50px;
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.card p {
+    font-size: 1rem;
+    font-weight: 300;
+    color: #555;
+}
+
+/* Form Section */
+.container {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    max-width: 400px;
+    width: 100%;
+}
+
+.container label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.container input {
+    width: calc(100% - 10px);
+    padding: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 1px;
+}
+
+.container button {
+    padding: 10px 15px;
+    background-color: #A8E6CF; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.container button:hover {
+    background-color: #90d0ba; 
+}
+
+
+@media (max-width: 768px) {
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .content {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .illustration img {
+        max-width: 300px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .process-cards {
+        flex-wrap: nowrap;
+        overflow-x: scroll;
+        padding-bottom: 20px;
+    }
+
+    .card {
+        min-width: 250px;
+        margin-right: 20px;
+    }
+}
