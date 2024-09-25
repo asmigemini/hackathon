@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Support Platform</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@300&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+    <div class="hero-section">
+        <div class="content">
+            <h1>Your Personalized Mental Health Companion</h1>
+            <p>Track your mood, receive personalized care tips, and embrace calm.</p>
+            <a href="#" class="cta-button">Get Started</a>
+        </div>
+        <div class="illustration">
+            <img src="static/images/landscape.jpg" alt="Calm and serene illustration">
+        </div>
+    </div>
+
+
+    <section class="process-section">
+        <h2>How It Works</h2>
+        <div class="process-cards">
+
+             <a href="/dashboard">
+        <div class="card" id="analyzeMoodCard">
+            <div class="icon">
+            <img src="static/images/mood-card2.png" alt="Analyze Mood Icon">
+            </div>
+            <h3>Analyze Your Mood</h3>
+            <p>Our AI uses sentiment analysis to evaluate your emotional state in real time.</p>
+        </div>
+    </a>
+        
+
+
+
+            <div class="card">
+                <div class="icon">
+                    <img src="static/images/brain.png" alt="AI Brain Icon">
+                </div>
+                <h3>Get Personalized Insights</h3>
+                <p>Receive tailored suggestions and tips based on your unique emotional patterns.</p>
+            </div>
+
+            <a href="/selfcare">
+            <div class="card">
+                <div class="icon">
+                    <img src="static/images/self-care.jpeg" alt="Self Care Icon">
+                </div>
+                <h3>Practice Self-Care</h3>
+                <p>Engage in activities recommended by the AI to improve your mood and well-being.</p>
+            </div>
+            </a>
+        </div>
+    </section>
+
+ 
+    <script src="script.js"></script>
+
+</body>
+</html>
