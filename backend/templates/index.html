@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Support Platform</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@300&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+    <div class="hero-section">
+        <div class="content">
+            <h1>Your Personalized Mental Health Companion</h1>
+            <p>Track your mood, receive personalized care tips, and embrace calm.</p>
+            <a href="#hello" class="cta-button">Get Started</a>
+        </div>
+        <div class="illustration">
+            <img src="static/images/landscape.jpg" alt="Calm and serene illustration">
+        </div>
+    </div>
+
+    <section class="info-section">
+        <div class="info-column left-column">
+            <h3>Mindfulness Practices</h3>
+            <p>Explore techniques like meditation, deep breathing, and journaling to enhance your mental clarity and emotional balance.</p>
+        </div>
+        <div class="info-content">
+            <h2>Why Mental Health Matters</h2>
+            <p>Mental health is essential to our overall well-being. It affects how we think, feel, and act in our daily lives. Understanding and caring for our mental health can help us build resilience, improve relationships, and enhance our quality of life.</p>
+            <p>Join our community and discover tools and resources to help you on your journey toward better mental health.</p>
+        </div>
+        <div class="info-column right-column">
+            <h3>Support Resources</h3>
+            <p>Find links to professional help, hotlines, and community support groups tailored to your needs.</p>
+        </div>
+    </section>
+
+
+    
+    <section class="process-section">
+        <h2 id = "hello">How It Works</h2>
+        <div class="process-cards">
+
+             <a href="/dashboard">
+        <div class="card" id="analyzeMoodCard">
+            <div class="icon">
+            <img src="static/images/mood-card2.png" alt="Analyze Mood Icon">
+            </div>
+            <h3>Analyze Your Mood</h3>
+            <p>Our AI uses sentiment analysis to evaluate your emotional state in real time.</p>
+        </div>
+    </a>
+                <a href="/personalized">
+            <div class="card" id="personalizedInsightsCard">
+                <div class="icon">
+                    <img src="static/images/brain.png" alt="AI Brain Icon">
+                </div>
+                <h3>Get Personalized Insights</h3>
+                <p>Receive tailored suggestions and tips based on your unique emotional patterns.</p>
+            </div>
+    </a>
+
+            <a href="/selfcare">
+            <div class="card" id="self-care">
+                <div class="icon">
+                    <img src="static/images/self-care.jpeg" alt="Self-Care Icon">
+                </div>
+                <h3>Engage in Self-Care</h3>
+                <p>Engage in activities recommended to improve your mood and well being.</p>
+            </div>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>Made by Ladies and Disappointments</p>
+    </footer>
+
+</body>
+</html>
