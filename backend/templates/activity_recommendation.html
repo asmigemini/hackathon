@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity Recommendations</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        
+        body {
+            animation: fadeIn 1s; 
+            background: linear-gradient(135deg, #6EC1E4, #D6C3E5); 
+        }
+
+
+        .container1 {
+            max-width: 800px; 
+            margin: auto;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            animation: slideIn 0.5s; 
+        }
+
+
+        h2 {
+            color: #4a90e2;
+            text-align: center;
+            animation: bounceIn 0.5s; 
+        }
+
+        p {
+            text-align: center;
+            font-size: 1.2em;
+            margin: 10px 0;
+            animation: fadeIn 0.7s; 
+        }
+
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap; 
+            justify-content: center; 
+        }
+
+        li {
+            background-color: rgba(122, 222, 237, 0.7);
+            padding: 15px;
+            margin: 10px;
+            border-radius: 50px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 0.5s; 
+            flex: 0 1 150px; 
+            min-width: 120px;
+            justify-content: center;
+        }
+
+        li:hover {
+            background-color: rgba(122, 222, 237, 0.9);
+            transform: translateY(-3px); 
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #4aaae2;
+            color: white;
+            text-decoration: none;
+            border-radius: 15px;
+            transition: background-color 0.3s ease;
+            animation: fadeIn 1s; 
+        }
+
+        a:hover {
+            background-image: linear-gradient(135deg, #FFB6C1, #00bfff);
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounceIn {
+            from {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container1">
+        <div>
+            <h2>Based on your mood:</h2>
+            <p>{{ mood }}</p>
+        </div>
+        <div>
+            <h2>Recommended Activities:</h2>
+            <ul>
+                {% for activity in activities %}
+                    <li>{{ activity }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <a href="/">Back to Home</a>
+    </div>
+</body>
+</html>

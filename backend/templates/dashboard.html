@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Mental Health Support</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        body {
+            background-image: linear-gradient(45deg, #81c5d6, #eb90b7);
+        }
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .days {
+            width: 100%;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .positive { 
+        background-color: #4a8cd2e6; 
+        border-radius: 50%; 
+        padding: 10px;
+        text-align: center;
+        transition: transform 0.3s, background-color 0.3s; 
+    }
+        .neutral { background-color: #FFEAB6; 
+            border-radius: 50%; 
+        padding: 10px;
+        text-align: center;
+        transition: transform 0.3s, background-color 0.3s; }
+        
+        .negative { background-color: #f68caedc; 
+            border-radius: 50%; 
+        padding: 10px;
+        text-align: center;
+        transition: transform 0.3s, background-color 0.3s; }
+        
+        .no-log { background-color: #dfdede; 
+            border-radius: 50%; 
+        padding: 10px;
+        text-align: center;
+        transition: transform 0.3s, background-color 0.3s; }
+        
+        ul {
+        list-style-type: none;
+        margin-left: 10px;
+        padding: 0;
+        width:100%;
+        background-color: 2C3E50;
+        float: left;
+        align-self: left;
+      }
+      
+      li {
+        float: left;
+      }
+      
+      li a {
+        display: block;
+        color: #2C3E50;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        border-radius: 15px;
+      }
+      
+      li a:hover {
+        background-color: #8eb5d0;
+      }
+      </style>
+</head>
+<body>
+    
+      </head>
+      <body>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/personalized">Personal Corner</a></li>
+        <li><a href="/selfcare">Self Care</a></li>
+        <li><a href="/dashboard">Log Mood</a></li>
+      </ul>
+
+    <h1>Welcome to Your Dashboard</h1>
+
+    <div class="form-container">
+        <h2 align="center">Analyze Your Mood</h2>
+        <form id="moodForm">
+            <label for="mood">How are you feeling today?</label>
+            <input type="text" id="mood" name="mood" required>
+            <div align="center"><button type="submit">Submit</button></div>
+        </form>
+    </div>
+
+    <div class="form-container">
+        <p id="message"></p>
+        <h2>Overall Mood History</h2>
+        <table id="moodTable">
+            <thead>
+                <tr>
+                    <th>Mood</th>
+                    <th>Sentiment</th>
+                    <th>Timestamp</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <div align="center"><button id="refreshButton">Refresh Mood History</button></div>
+    </div>
+<div class="form-container">
+    <h3>Logged Moods:</h3>
+    <ul id="moodList"></ul>
+    <h3>Colour key:</h3>
+    <pre>
+                    <div class="positive">Positive</div>
+                    <div class="negative">Negative</div>
+                    <div class="neutral">Neutral</div>
+                    <div class="no-log">No log</div>
+            </pre>
+    <h3>Mood Calendar:</h3>
+    <div class="calendar" id="moodCalendar"></div>
+</div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function fetchMoods() {
+                fetch('/get_moods')
+                .then(response => response.json())
+                .then(data => {
+                    const moodList = document.getElementById('moodList');
+                    const moodTableBody = document.getElementById('moodTable').querySelector('tbody');
+                    const moodCalendar = document.getElementById('moodCalendar');
+                    moodCalendar.innerHTML = '';
+                    moodList.innerHTML = '';
+                    moodTableBody.innerHTML = '';
+
+                    const moodsByDate = {};
+                    data.forEach(mood => {
+                        const moodItem = document.createElement('li');
+                        moodItem.textContent = `${mood.timestamp}: ${mood.mood} - Sentiment: ${mood.sentiment}`;
+                        moodList.appendChild(moodItem);
+
+                        moodsByDate[mood.timestamp] = mood.sentiment;
+
+                        const row = document.createElement('tr');
+                        row.innerHTML = `<td>${mood.mood}</td><td>${mood.sentiment}</td><td>${mood.timestamp}</td>`;
+                        moodTableBody.appendChild(row);
+                    });
+
+                    const daysInMonth = new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
+                    for (let day = 1; day <= daysInMonth; day++) {
+                        const dateKey = `${new Date().getFullYear()}-${String(new Date().getMonth() + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                        const sentimentClass = moodsByDate[dateKey] ? moodsByDate[dateKey] : 'no-log';
+                        const dayDiv = document.createElement('div');
+                        dayDiv.className = 'day ' + (sentimentClass === 'positive' ? 'positive' : sentimentClass === 'negative' ? 'negative' : sentimentClass === 'neutral' ? 'neutral' : 'no-log');
+                        dayDiv.textContent = day;
+                        moodCalendar.appendChild(dayDiv);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching moods:', error);
+                });
+            }
+
+
+            fetchMoods();
+
+
+            document.getElementById('refreshButton').addEventListener('click', fetchMoods);
+        });
+    </script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood History</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<style>
+    ul {
+        list-style-type: none;
+        margin-left: 10px;
+        padding: 0;
+        width:100%;
+        background-color: 2C3E50;
+        float: left;
+        align-self: left;
+      }
+      
+      li {
+        float: left;
+      }
+      
+      li a {
+        display: block;
+        color: #2C3E50;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        border-radius: 15px;
+      }
+      
+      li a:hover {
+        background-color: #8eb5d0;
+      }
+</style>
+<body>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/personalized">Personal Corner</a></li>
+        <li><a href="/selfcare">Self Care</a></li>
+        <li><a href="/dashboard">Log Mood</a></li>
+      </ul>
+
+    <div class="container">
+        <h1>Mood History</h1>
+        <table id="moodHistoryTable">
+            <thead>
+                <tr>
+                    <th>Mood</th>
+                    <th>Sentiment</th>
+                    <th>Timestamp</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for mood in mood_list %}
+                <tr>
+                    <td>{{ mood[0] }}</td>
+                    <td>{{ mood[1] }}</td>
+                    <td>{{ mood[2] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
